@@ -13,7 +13,7 @@ namespace CarGarage.Tests
             var xxx = new Garage();
 
             // Act
-            xxx.AddCar();
+            xxx.AddCar("Ford" , "Focus");
 
             // Assert
             Assert.NotEmpty(xxx.TheGarage);
@@ -24,8 +24,15 @@ namespace CarGarage.Tests
         {
             // Tests RemoveCar() method
             // Arrange
+            var xxx = new Garage();
+            xxx.AddCar("Ford", "Focus");
+
             // Act
+            xxx.RemoveCar(0);
+
             // Assert
+            Assert.Empty(xxx.TheGarage);
+            
         }
 
         [Fact]
@@ -33,15 +40,26 @@ namespace CarGarage.Tests
         {
             // Tests FuelAllCars() method
             // Arrange
+            var xxx = new Garage();
+            xxx.AddCar("Ford", "Focus"); //0 in my list      xxx   Garage[index] 
+            xxx.TheGarage[0].Accelerate();
+            xxx.TheGarage[0].Accelerate();
+            xxx.TheGarage[0].Accelerate();
+            xxx.TheGarage[0].Accelerate();
             // Act
+            xxx.FuelAllCars();
+
             // Assert
+            Assert.Equal(100, xxx.TheGarage[0].GasLevel);
         }
 
         [Fact]
         public void shouldTestDriveOneCar()
         {
             // Use the Program class to let you select a single car
+
             // Program class should then let you choose what you want to do with that car
+
             // You do not need to test user input in the Program class
         }
 
